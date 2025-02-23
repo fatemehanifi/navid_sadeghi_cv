@@ -1,0 +1,9 @@
+{
+    "home": {
+      "title": "Welcome to my website",
+      "description": "This site is available in multiple languages."
+    },
+    "button": {
+      "contact": "Contact Us"
+    }
+}
