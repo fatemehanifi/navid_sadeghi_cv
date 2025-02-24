@@ -1,4 +1,11 @@
 {
+  "navbar": {
+    "achievements": "Achievements",
+    "contact_us": "Contact us",
+    "communication": "Communication",
+    "persian_language": "Persian",
+    "english_language": "English"
+  },
     "home": {
       "title": "Welcome to my website",
       "description": "This site is available in multiple languages."

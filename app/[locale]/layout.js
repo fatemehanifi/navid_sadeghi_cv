@@ -1,7 +1,8 @@
-import { NextIntlClientProvider, useLocale } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import iranSansFont from "@/styles/fonts";
 
 import "@/styles/globals.css";
 
@@ -19,8 +20,10 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} style={{ direction: locale === "fa" ? "rtl" : "ltr" }}>
+    <html lang={locale} className={iranSansFont.variable}>
       <body
+          style={{ direction: locale === "fa" ? "rtl" : "ltr" }}
+          className="font-iranSans"
       >
         <NextIntlClientProvider messages={messages}>
           {children}

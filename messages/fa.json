@@ -1,4 +1,11 @@
 {
+  "navbar": {
+    "achievements": "دستاوردها",
+    "contact_us": "ارتباط با ما",
+    "communication": "راه‌های ارتباطی",
+    "persian_language": "فارسی",
+    "english_language": "انگلیسی"
+  },
     "home": {
       "title": "به وب سایت من خوش آمدید!",
       "description": "این سایت به چند زبان قابل دسترسی است."
