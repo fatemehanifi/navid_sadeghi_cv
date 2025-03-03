@@ -27,9 +27,14 @@ export default {
             transform: 'translateY(0)'
           },
         },
+        marquee: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
       animation: {
-        fadeDown: 'fadeDown 0.8s ease-out forwards'
+        fadeDown: 'fadeDown 0.8s ease-out forwards',
+        marquee: 'marquee 15s linear infinite',
       },
     },
   },

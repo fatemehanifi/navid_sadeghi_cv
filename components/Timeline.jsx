@@ -1,38 +1,62 @@
-"use client"
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
+"use client";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+const experiences = [
+    { id: 1, title: "Started University", date: "2018" },
+    { id: 2, title: "Internship at XYZ", date: "2020" },
+    { id: 3, title: "Graduated & First Job", date: "2021" },
+    { id: 4, title: "Mid-Level Developer", date: "2023" },
+];
 
 const Timeline = () => {
-    const [activeItem, setActiveItem] = useState(null);
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"],
+    });
+    const yValue = useTransform(scrollYProgress, [0, 1], ["0px", "420px"]);
 
-    const experiences = [
-        { id: 1, title: "شروع", description: "شروع یادگیری برنامه‌نویسی", position: { x: 50, y: 100 } },
-        { id: 2, title: "اولین پروژه", description: "ساخت اولین وبسایت", position: { x: 200, y: 200 } },
-        { id: 3, title: "دست‌آورد مهم", description: "شرکت در اولین پروژه تیمی", position: { x: 350, y: 150 } },
-    ];
 
     return (
-        <div className="relative w-full flex flex-col justify-center items-center py-10">
-            <div className="bg-green-300 rounded-full px-4 py-3">01</div>
-            <div className="w-2 h-[220px] border-r-2 border-dashed border-green-900"></div>
-            <div className="bg-green-300 rounded-full px-4 py-3">02</div>
-            <div className="w-2 h-[220px] border-r-2 border-dashed border-green-900"></div>
-            <div className="bg-green-300 rounded-full px-4 py-3">03</div>
-            <div className="w-2 h-[220px] border-r-2 border-dashed border-green-900"></div>
+        <div ref={ref} className="relative flex items-center">
+            {/* Progress Line */}
+            <motion.div
+                className="absolute w-1 bg-gray-300 rounded-lg"
+                style={{height: "100%", top: 0}}
+            >
+                <motion.div
+                    className="absolute w-1 bg-indigo-500 rounded-lg"
+                    style={{
+                        height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+                    }}
+                />
+                <motion.div
+                    className="w-5 h-5 bg-indigo-500 rounded-full -ml-2.5 absolute left-1/2 transform -translate-x-1/2"
+                    style={{y: yValue}}
+                />
+            </motion.div>
 
-            <div className="max-w-[300px] absolute top-10 left-[20%] bg-white p-4 rounded-xl">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-            </div>
-            <div className="max-w-[300px] absolute top-10 right-[20%]">
-                <Image src="/navid.jpg" alt={"navid"} width={250} height={100} />
-            </div>
+            {/* Timeline Events */}
+            <div className="relative flex flex-col items-start mt-10">
+                {experiences.map((exp, index) => {
 
-            <div className="max-w-[300px] absolute top-[40%] right-[20%] bg-white p-4 rounded-xl">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-            </div>
-            <div className="max-w-[300px] absolute top-[40%] left-[20%]">
-                <Image src="/navid.jpg" alt={"navid"} width={250} height={100} />
+                    return (
+                        <div key={exp.id} className="flex items-center mb-12 animate-fadeDown">
+                            {/* Progress Bar Dot (Positioned exactly on the line) */}
+                            {/*<motion.div*/}
+                            {/*    className="w-5 h-5 bg-indigo-500 rounded-full border-4 border-white shadow-lg absolute left-1/2 transform -translate-x-1/2"*/}
+                            {/*    style={{ y: yValue }}*/}
+                            {/*/>*/}
+
+                            {/* Experience Details (Shifted to the right of the line) */}
+                            <div className="ml-8 text-left">
+                                <h3 className="text-lg font-semibold text-gray-800">{exp.title}</h3>
+                                <p className="text-gray-600">{exp.date}</p>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

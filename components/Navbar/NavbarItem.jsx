@@ -5,7 +5,7 @@ export default function NavbarItem({ title, target }) {
         <li>
             <Link 
                 href={target}
-                className="hover:bg-green-200 hover:text-black p-2 rounded-lg transition-all ease-in-out duration-300"
+                className="hover:bg-blue-200 hover:text-black p-2 rounded-lg transition-all ease-in-out duration-300"
             >
                 {title}
             </Link>

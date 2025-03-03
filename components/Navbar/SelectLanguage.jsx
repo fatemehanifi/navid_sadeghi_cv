@@ -47,10 +47,10 @@ export default function SelectLanguage() {
             {showOptions && 
                 <div className={`min-w-[100px] absolute top-8 ${locale === "fa" ? "left-0" : "right-0"} bg-white text-black z-10 border border-black rounded-lg`}>
                     <div className="flex flex-col">
-                        <Link href="/fa" className="hover:bg-green-200 p-4 rounded-lg">
+                        <Link href="/fa" className="hover:bg-blue-200 p-4 rounded-lg">
                             {t("persian_language")}
                         </Link>
-                        <Link href="/en" className="hover:bg-green-200 p-4 rounded-lg">
+                        <Link href="/en" className="hover:bg-blue-200 p-4 rounded-lg">
                             {t("english_language")}
                         </Link>
                     </div>
