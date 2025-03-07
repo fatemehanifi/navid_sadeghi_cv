@@ -1,0 +1,47 @@
+.curly-timeline-container {
+    position: relative;
+    margin: 20px;
+    padding-left: 40px; /* Some space for the markers */
+}
+
+.curly-timeline-item {
+    position: relative;
+    margin-bottom: 150px; /* Space to accommodate the curly SVG connector */
+}
+
+/* Position the dot on the left */
+.curly-timeline-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.curly-timeline-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #333;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Content styling */
+.curly-timeline-content {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* The connector is absolutely positioned so it “flows” from one dot to the next */
+.curly-timeline-connector {
+    position: absolute;
+    left: 8px; /* Align with the center of the dot (12px wide => center is around 6px) */
+    top: 20px; /* Start drawing below the dot */
+    width: 50px;
+    height: 120px; /* The curly path is drawn within this vertical space */
+}
